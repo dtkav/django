@@ -78,6 +78,7 @@ class HashedFilesMixin:
         md5 = hashlib.md5()
         for chunk in content.chunks():
             md5.update(chunk)
+        content.seek(0)
         return md5.hexdigest()[:12]
 
     def hashed_name(self, name, content=None, filename=None):
